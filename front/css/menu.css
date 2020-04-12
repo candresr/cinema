@@ -1,0 +1,21 @@
+.menu-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-menu {
+
+  width: 200px;
+  height: 800px;
+  padding: 60px;
+  vertical-align: middle;
+  background: #435d7d;
+
+}
+
+a {
+    color: #ffffff;
+    font-size: 15px;
+}
