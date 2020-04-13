@@ -2,8 +2,13 @@ module Api
   module V1
     class ReservesController < ApplicationController
       def index
-        reserve = Reserve.select(:nombre,:cedula,:celular,:correo,:'movies.titulo').joins(:movie)
-        render json: {status:'SUCCESS', message:'Reservas Cargados', data:reserve}, status: :ok
+        if  params[:fecha_inicio] && params[:fecha_fin]
+           filter = Reserve.filter_dates(params[:fecha_inicio],params[:fecha_fin])
+           render json: {status:'SUCCESS', message:'filtro de fecha', data:filter}, status: :ok
+         else
+           reserve = Reserve.select(:nombre,:cedula,:celular,:correo,:'movies.titulo').joins(:movie)
+           render json: {status:'SUCCESS', message:'Reservas Cargados', data:reserve}, status: :ok
+        end
       end
 
       def create
